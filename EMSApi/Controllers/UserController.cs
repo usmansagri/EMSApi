@@ -38,6 +38,7 @@ namespace EMSApi.Controllers
 
         //Get all users
         [HttpGet("all")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<List<Users>>> getUsers()
         {
             var usersList=_usersRepo.getUserList();
@@ -61,6 +62,7 @@ namespace EMSApi.Controllers
 
         //Create new user
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<List<Users>>> postUsers([FromBody]Users user)
         {
            var addedUser= _usersRepo.Register(user); //You may want to validate user role before performing this action.
@@ -75,6 +77,7 @@ namespace EMSApi.Controllers
 
         //Delete user by id
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<List<Users>>> deleteUser(int id)
         {
             var delUser=_usersRepo.DeleteUser(id); //You may want to validate user role before performing this action.

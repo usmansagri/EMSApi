@@ -56,7 +56,7 @@ namespace EMSApi.Repository
             user.Token=tokenHandler.WriteToken(token);
             return user; //return user object with token
         }
-
+        
         public Users DeleteUser(int id)
         {
             var user=_context.Users.SingleOrDefault(u => u.Id == id);
