@@ -49,7 +49,7 @@ namespace EMSApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Users>> getUsers(int id)
         {
-            var singleUser = _usersRepo.findUser(id); //You may want to validate user role before performing this action.
+            var singleUser = _usersRepo.findUser(id); 
             if (singleUser == null)
             {
                 return NotFound(new
@@ -65,7 +65,7 @@ namespace EMSApi.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<List<Users>>> postUsers([FromBody]Users user)
         {
-           var addedUser= _usersRepo.Register(user); //You may want to validate user role before performing this action.
+           var addedUser= _usersRepo.Register(user); 
             if (addedUser == null)
             {
                return NotFound();
@@ -80,7 +80,7 @@ namespace EMSApi.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<List<Users>>> deleteUser(int id)
         {
-            var delUser=_usersRepo.DeleteUser(id); //You may want to validate user role before performing this action.
+            var delUser=_usersRepo.DeleteUser(id); 
             if(delUser == null)
             {
                 return NotFound(new
